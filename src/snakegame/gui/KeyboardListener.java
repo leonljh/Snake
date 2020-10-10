@@ -22,13 +22,21 @@ public class KeyboardListener implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-            snake.setDirection(Direction.LEFT);
+            if(snake.getDirection() != Direction.RIGHT) {
+                snake.setDirection(Direction.LEFT);
+            }
         } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-            snake.setDirection(Direction.RIGHT);
+            if(snake.getDirection() != Direction.LEFT) {
+                snake.setDirection(Direction.RIGHT);
+            }
         } else if (e.getKeyCode() == KeyEvent.VK_UP){
-            snake.setDirection(Direction.DOWN);
+            if(snake.getDirection() != Direction.DOWN) {
+                snake.setDirection(Direction.UP);
+            }
         } else if (e.getKeyCode() == KeyEvent.VK_DOWN){
-            snake.setDirection(Direction.UP);
+            if(snake.getDirection() != Direction.UP) {
+                snake.setDirection(Direction.DOWN);
+            }
         }
     }
 

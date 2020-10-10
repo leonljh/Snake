@@ -12,6 +12,7 @@ public class DrawingBoard extends JPanel implements Updatable{
     public DrawingBoard(SnakeGame snakeGame, int pieceLength){
         this.snakeGame = snakeGame;
         this.pieceLength = pieceLength;
+        this.setBackground(Color.BLACK);
     }
 
     @Override
@@ -19,7 +20,7 @@ public class DrawingBoard extends JPanel implements Updatable{
 
         super.paintComponent(g);
 
-        g.setColor(Color.BLACK);
+        g.setColor(Color.LIGHT_GRAY);
 
         for(int i = 0; i < snakeGame.getSnake().getLength(); i++) {
 

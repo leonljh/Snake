@@ -59,12 +59,12 @@ public class Snake {
             x += 1;
         }
         if(getDirection() == Direction.UP) {
-            p = new Piece(x,y+1);
-            y += 1;
-        }
-        if(getDirection() == Direction.DOWN){
             p = new Piece(x,y-1);
             y -= 1;
+        }
+        if(getDirection() == Direction.DOWN){
+            p = new Piece(x,y+1);
+            y += 1;
         }
 
         snake.add(p);

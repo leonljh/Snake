@@ -76,6 +76,7 @@ public class SnakeGame extends Timer implements ActionListener {
         }
         updatable.update();
         setDelay(1000/snake.getLength());
+
     }
 
     public Snake getSnake(){
