@@ -12,6 +12,7 @@ public class UserInterface implements Runnable {
     private JFrame frame;
     private SnakeGame game;
     private int sideLength;
+    private DrawingBoard db;
 
     public UserInterface(SnakeGame game, int sideLength) {
         this.game = game;
@@ -37,10 +38,19 @@ public class UserInterface implements Runnable {
     public void createComponents(Container container) {
         // Create drawing board first which then is added into container-object.
         // After this, create keyboard listener which is added into frame-object
+        System.out.println("hi");
+        db = new DrawingBoard(game,sideLength);
+        container.add(db);
+        KeyboardListener kb = new KeyboardListener(game.getSnake());
+        frame.addKeyListener(kb);
     }
 
 
     public JFrame getFrame() {
         return frame;
+    }
+
+    public Updatable getUpdatable(){
+        return db;
     }
 }

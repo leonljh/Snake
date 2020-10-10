@@ -26,9 +26,9 @@ public class KeyboardListener implements KeyListener {
         } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
             snake.setDirection(Direction.RIGHT);
         } else if (e.getKeyCode() == KeyEvent.VK_UP){
-            snake.setDirection(Direction.UP);
-        } else if (e.getKeyCode() == KeyEvent.VK_DOWN){
             snake.setDirection(Direction.DOWN);
+        } else if (e.getKeyCode() == KeyEvent.VK_DOWN){
+            snake.setDirection(Direction.UP);
         }
     }
 

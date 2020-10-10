@@ -25,14 +25,17 @@ public class SnakeGame extends Timer implements ActionListener {
         this.height = height;
         this.continues = true;
 
-        addActionListener(this);
-        setInitialDelay(2000);
-
         snake = new Snake(width/2,height/2,Direction.DOWN);
         Random random = new Random();
         int randomX = random.nextInt(width);
         int randomY = random.nextInt(height);
         apple = new Apple(randomX,randomY);
+        System.out.println("snake called");
+
+        addActionListener(this);
+        setInitialDelay(2000);
+
+
     }
 
 
@@ -54,6 +57,7 @@ public class SnakeGame extends Timer implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent ae) {
+        System.out.println("action performed");
         if (!continues) {
             return;
         }
