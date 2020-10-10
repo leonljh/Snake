@@ -11,10 +11,12 @@ public class Snake {
     private Direction dir;
     private List<Piece> snake;
     private boolean growin;
+    private int width;
+    private int height;
 
 
 
-    public Snake(int originalX, int originalY, Direction originalDirection){
+    public Snake(int originalX, int originalY, Direction originalDirection,int width, int height){
         this.x = originalX;
         this.y = originalY;
         this.dir = originalDirection;
@@ -22,6 +24,8 @@ public class Snake {
         snake = new ArrayList<Piece>();
         snake.add(piece);
         growin = false;
+        this.width = width;
+        this.height = height;
     }
 
     public Direction getDirection(){
@@ -41,8 +45,6 @@ public class Snake {
     }
 
     public void move(){
-        //first 3 moves will implement grow
-        //after that it just moves
 
         if(getLength() < 3){
             growin = true;
@@ -52,20 +54,50 @@ public class Snake {
 
         if(getDirection() == Direction.LEFT){
 
-            p = new Piece(x-1,y);
-            x -= 1;
+            if(x == 0){
+                p = new Piece(width,y);
+                x = width;
+            }
+            else {
+                p = new Piece(x - 1, y);
+                x -= 1;
+            }
         }
+
         if(getDirection() == Direction.RIGHT) {
-            p = new Piece(x+1,y);
-            x += 1;
+            if(x == width){
+                x = 0;
+                p = new Piece(0,y);
+            }
+            else {
+                p = new Piece(x + 1, y);
+                x += 1;
+            }
         }
+
         if(getDirection() == Direction.UP) {
-            p = new Piece(x,y-1);
-            y -= 1;
+            if(y == 0){
+                y = height;
+                p = new Piece(x,height);
+                System.out.println(x + "===" + y);
+            }
+            else {
+                System.out.println(x + "===" + y);
+                p = new Piece(x, y - 1);
+                y -= 1;
+            }
         }
+
         if(getDirection() == Direction.DOWN){
-            p = new Piece(x,y+1);
-            y += 1;
+            if(y == height){
+                y = 0;
+                p = new Piece(x,0);
+                System.out.println(x + "===" + y);
+            }
+            else {
+                p = new Piece(x, y + 1);
+                y += 1;
+            }
         }
 
         snake.add(p);

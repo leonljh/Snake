@@ -20,13 +20,14 @@ public class SnakeGame extends Timer implements ActionListener {
     private Apple apple;
 
     public SnakeGame(int width, int height) {
+
         super(1000, null);
 
         this.width = width;
         this.height = height;
         this.continues = true;
 
-        snake = new Snake(width/2,height/2,Direction.DOWN);
+        snake = new Snake(width/2,height/2,Direction.DOWN,width,height);
         Random random = new Random();
         int randomX = random.nextInt(width);
         int randomY = random.nextInt(height);
