@@ -51,6 +51,7 @@ public class Snake {
         Piece p = null;
 
         if(getDirection() == Direction.LEFT){
+
             p = new Piece(x-1,y);
             x -= 1;
         }

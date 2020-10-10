@@ -6,6 +6,7 @@ import java.util.Random;
 import javax.swing.Timer;
 import snakegame.Direction;
 import snakegame.domain.Apple;
+import snakegame.domain.Piece;
 import snakegame.domain.Snake;
 import snakegame.gui.Updatable;
 
@@ -57,7 +58,6 @@ public class SnakeGame extends Timer implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        System.out.println("action performed");
         if (!continues) {
             return;
         }
@@ -66,10 +66,7 @@ public class SnakeGame extends Timer implements ActionListener {
         if(this.snake.runsInto(this.apple)){
             snake.grow();
             apple = null;
-            Random random = new Random();
-            int randomX = random.nextInt(width);
-            int randomY = random.nextInt(height);
-            apple = new Apple(randomX,randomY);
+            spawnApple();
         }
         if(snake.runsIntoItself()){
             continues = false;
@@ -94,4 +91,30 @@ public class SnakeGame extends Timer implements ActionListener {
     public void setApple(Apple apple){
         this.apple = apple;
     }
-}
+
+    public void spawnApple(){
+
+            Random random = new Random();
+            int randomX = random.nextInt(width);
+            int randomY = random.nextInt(height);
+
+            if(appleClash(randomX,randomY)){
+                spawnApple();
+            }
+            else{
+                apple = new Apple(randomX, randomY);
+                setApple(apple);
+            }
+        }
+
+     public boolean appleClash(int x, int y){
+        for(Piece p: snake.getPieces()){
+            if(p.getX() == x && p.getY() == y){
+                return true;
+            }
+        }
+        return false;
+     }
+
+    }
+
